@@ -1,0 +1,17 @@
+lint:
+  extends:
+    - recommended
+  plugins:
+    - './plugins/internal.js'
+  decorators:
+    internal/remove-parameters: error
+    internal/remove-properties: error
+    internal/remove-components: error
+
+  rules:
+    # https://redoc.ly/docs/cli/built-in-rules/
+    info-license: off
+    no-empty-servers: off
+    info-description: off
+    tag-description: off
+    operation-4xx-response: off
