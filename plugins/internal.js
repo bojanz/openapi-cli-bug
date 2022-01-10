@@ -4,40 +4,32 @@ const id = "internal";
 const decorators = {
   oas3: {
     "remove-parameters": () => {
-      function removeParameters(node, ctx) {
-        if (!node.parameters) {
-          return;
-        }
-
-        let didDelete = false;
-        for (let i = 0; i < node.parameters.length; i++) {
-          if (!node.parameters[i]) {
-            continue;
-          }
-          parameter = node.parameters[i];
+      function removeParameters(parameters, ctx) {
+        return parameters.filter(function (parameter) {
           if (parameter["$ref"]) {
             resolved = ctx.resolve({
               $ref: parameter["$ref"],
             });
             parameter = resolved.node;
           }
-          if (parameter["x-internal"]) {
-            node.parameters.splice(i, 1);
-            didDelete = true;
-            i--;
-          }
-        }
+
+          return !parameter["x-internal"];
+        })
       }
 
       return {
         Operation: {
           leave(operation, ctx) {
-            removeParameters(operation, ctx);
+            if (operation.parameters) {
+              operation.parameters = removeParameters(operation.parameters, ctx);
+            }
           },
         },
         PathItem: {
           leave(pathItem, ctx) {
-            removeParameters(pathItem, ctx);
+            if (pathItem.parameters) {
+              pathItem.parameters = removeParameters(pathItem.parameters, ctx);
+            }
           },
         },
       };
