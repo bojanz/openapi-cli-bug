@@ -20,12 +20,6 @@ paths:
           schema:
             type: string
         - in: query
-          name: filter[deleted]
-          description: Allows filtering by `deleted`.
-          schema:
-            type: boolean
-          x-internal: true
-        - in: query
           name: page
           description: The page number.
           schema:
@@ -58,7 +52,6 @@ paths:
         - Products
       parameters:
         - $ref: '#/components/parameters/ProductID'
-        - $ref: '#/components/parameters/Vendor'
       responses:
         '200':
           description: Successful response.
