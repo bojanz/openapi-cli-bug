@@ -1,5 +1,5 @@
 The original spec is in original.yaml. The bundled spec is in bundled.yaml and was generated
-via `openapi bundle original.yaml -o bundled.yaml` using OpenAPI CLI 1.0.0-beta.69.
+via `openapi bundle original.yaml -o bundled.yaml` using OpenAPI CLI 1.0.0-beta.78.
 
 The decorator being debugged is "remove-parameters" in plugins/internal.js.
 
