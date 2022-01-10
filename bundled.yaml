@@ -14,17 +14,12 @@ paths:
       tags:
         - Products
       parameters:
+        - $ref: '#/components/parameters/Vendor'
         - in: query
           name: filter[owner_id]
           description: Allows filtering by `owner_id`.
           schema:
             type: string
-        - in: query
-          name: filter[deleted]
-          description: Allows filtering by `deleted`.
-          schema:
-            type: boolean
-          x-internal: true
         - in: query
           name: page
           description: The page number.

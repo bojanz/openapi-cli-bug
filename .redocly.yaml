@@ -1,12 +1,8 @@
 lint:
   extends:
     - recommended
-  plugins:
-    - './plugins/internal.js'
   decorators:
-    internal/remove-parameters: error
-    internal/remove-properties: error
-    internal/remove-components: error
+    remove-x-internal: on
 
   rules:
     # https://redoc.ly/docs/cli/built-in-rules/
